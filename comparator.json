@@ -1,0 +1,14 @@
+{
+  "challenge_module": "DesignsIIExtChallenge",
+  "solution_module": "DesignsIIExtSolution",
+  "theorem_names": [
+    "DesignsII.TParams.lemma_3_8"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

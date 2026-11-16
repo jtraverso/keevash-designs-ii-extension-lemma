@@ -1,0 +1,30 @@
+name = "keevash_designs2_ext"
+version = "0.1.0"
+defaultTargets = ["DesignsII", "DesignsIIExtChallenge", "DesignsIIExtSolution"]
+requiresModuleSystem = true
+
+[leanOptions]
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0-rc3"
+
+[[require]]
+name = "keevash_triangle"
+git = "https://github.com/jtraverso/keevash-triangle-decompositions"
+rev = "274272da83ddb513437e4394bb79995c215954ee"
+
+[[lean_lib]]
+name = "DesignsII"
+globs = ["DesignsII.+"]
+
+[[lean_lib]]
+name = "DesignsIIExtChallenge"
+roots = ["DesignsIIExtChallenge"]
+
+[[lean_lib]]
+name = "DesignsIIExtSolution"
+roots = ["DesignsIIExtSolution"]

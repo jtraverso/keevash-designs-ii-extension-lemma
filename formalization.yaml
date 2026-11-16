@@ -1,0 +1,145 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Keevash, The existence of designs II, Lemma 3.8 (ext*): extensions in the random algebraic template"
+  description: >-
+    A Lean 4 / Mathlib formalization of Lemma 3.8 (Lemma ext*) of P. Keevash, "The existence of
+    designs II" (arXiv:1802.05900): in the random algebraic template M* built from independent
+    uniform injections f_j : [n] → F_{p^a}-like field K (j < z), random colours T_e and orders
+    π_e of the r-sets, random A_φ and activations, the number of configurations of an extension
+    all of whose atoms γ(ψ) lie below ∂^γ M* is, with high probability, at least its explicit
+    expectation-type lower bound minus 2εN^v. The statement DesignsII.TParams.lemma_3_8 is fully
+    quantitative: the lower bound is |C|·(z+1−kd)_m·(a^m − m²·K_c·n^((q−r)(m−2)))·p^m − 2εN^v with
+    a = ω|V(Φ)|^(q−r) − (q−r)·s·n^(q−r−1) and p = (2N^(q−r))^(-1) z^(-C(q,r)) ((q−r)!/q!)^C(q,r)
+    |𝒜|^(-1) k_min/N_act, and the failure probability is at most
+    C(z,kd)·p_deg^kd + 2exp(−ε²N/(2c₁)) + 2exp(−ε²N/(2c₂)) with explicit constants c₁, c₂
+    independent of N (p_deg = |F|^s N^(s−1) (N−s)!/N! bounds the probability that a colour is
+    degenerate at the s fixed vertices). The hypotheses are those of the paper: Φ is a
+    Σ-adapted [q]-complex, (Φ, γ[G]) is (ω,h)-extendable (Definition 2.9), the copies used are
+    Φ-embeddings of A = Σ^≤ and those with γ(φ) ≤_γ G are activated with threshold ≥ k_min. The
+    proof follows the paper (Lemma e|E for the conditional probabilities given the fixed
+    vertices, a two-stage Lipschitz concentration for the covering count, the template
+    decomposition of Designs I Lemma 3.3), with the corrections recorded under fidelity.
+    Mathlib does not contain this result.
+  authors:
+    - "Juan Pablo Traverso Gianini"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan Pablo Traverso Gianini"
+
+classification:
+  arxiv: ["math.CO", "math.PR"]
+  msc2020: ["05B05", "05C70", "60C05"]
+
+repository:
+  role: "substantive-development"
+
+sources:
+  - title: "The existence of designs II"
+    authors:
+      - "Peter Keevash"
+    id: "arXiv:1802.05900"
+    type: "paper"
+    location: "arXiv:1802.05900v1: Section 2 (Definitions 2.1–2.9, 2.11–2.12, 2.17–2.23, Lemma 2.21), Section 3.2 (Definition 3.2, the template), Section 3.3 (local events, Lemma 3.6 e|E, Lemma 3.8 ext*)"
+    relationship: "formalizes"
+    note: >-
+      The template is modelled by independent uniform permutations: f_j is a permutation of [N]
+      read through a bijection κ : [N] ≃ K with a finite field K ⊇ F (N = |K| ≥ n), T_e, π_e
+      and A_φ are permutations read at a fixed position, and the activation of φ is a uniform
+      permutation of [N_act] with threshold k_φ (a rational version of the paper's probability
+      y_φ ω n^(q−r)). The proof of the paper's sketch ("the proof of concentration is similar to
+      that in [Kexist, Lemma 3.8]") needed several repairs, made here: (1) changing f_j at a
+      fixed vertex moves a Θ(1/z) fraction of the configurations, so the concentration is
+      proved conditionally on the values of the colours at the fixed vertices (with an
+      exceptional set: colours whose fixed values are F-linearly dependent occur with
+      probability O(1/n) each, and at least kd of them with probability C(z,kd) p_deg^kd);
+      (2) the concentration is split into two stages, colours first and T, π, A, activations
+      second, with second-stage Lipschitz constants depending on the colours (only copies
+      compatible with the colours matter); a single-stage bounded-differences bound is too
+      weak; (3) the conditional passing probability (Lemma e|E) is computed exactly as a count
+      of points on an affine slice minus collisions. The formalization is by a different
+      author; the article's author was not involved.
+    license: "all rights reserved"
+    author_endorsement: "not-contacted"
+  - title: "The existence of designs"
+    authors:
+      - "Peter Keevash"
+    id: "arXiv:1401.3665"
+    type: "paper"
+    location: "Section 3 (the template, Lemma 3.3), Lemmas 2.11 (lip3), 3.6 and 3.8"
+    relationship: "builds-on"
+    note: "Designs II refers to these lemmas; their arguments are reconstructed in the generality needed."
+    license: "all rights reserved"
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "PALOMAR-2026-11-14-000022 v2 (jtraverso/keevash-triangle-decompositions @ 274272d)"
+    relationship: "builds-on"
+    note: "Pinned dependency (KeevashRAC.PL.Permutation): the Azuma-type concentration for uniform permutations used in the Lipschitz lemma (lip3)."
+
+status:
+  scope: >-
+    Lemma 3.8 (ext*) of Keevash's "The existence of designs II", with explicit rates, for the
+    random algebraic template modelled by independent uniform permutations. Theorem 3.1 and
+    the headline results of the paper are not part of this entry.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5"]
+      framework: "Claude Code (Anthropic)"
+      tool_setup: >-
+        Statement design and review against the paper, all proofs (DesignsII/*.lean), the
+        repairs listed under sources, and the Palomar packaging, checked with lake build
+        against the pinned dependencies, #print axioms and a comparison of the elaborated
+        Challenge and Solution statements and definitions (pp.all) (Lean v4.35.0-rc3, Mathlib
+        c55e6e786f49471c72fbddbec5415808896aec1e).
+      cost:
+        wall_time: "a few days"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "Natural-language instructions in Spanish, directed by the author."
+  spend_usd: "subscription-based"
+  notes: >-
+    The result was chosen by the human author; the Lean proofs are AI-generated and mechanically
+    verified: no sorry, axioms limited to propext, Classical.choice and Quot.sound, identical
+    elaborated statements and definitions in the Challenge and the Solution.
+
+fidelity:
+  divergences: >-
+    (a) Probability space: independent uniform permutations instead of the paper's independent
+    uniform injections and Bernoulli activations; the activation probability is k_φ/N_act. (b)
+    The template uses one family member A (A_φ = A is one of the tests, probability 1/|𝒜|); the
+    paper's M* contains the copies of every A ∈ 𝒜, so ∂^γ M* here is below the paper's and the
+    lower bound transfers. (c) The paper's statement "whp X > ω n^(v_E) (zρ/2)^|H'|" is given
+    with explicit rates: X ≥ |C|(z+1−kd)_m(a^m − m²K_c n^((q−r)(m−2)))p^m − 2εN^v; the
+    configurations C, their labelled edges ψ b i and the counting bounds (|C| ≤ ΔN^v, at most
+    ΔN^(v−(r−|F_i|)) configurations through an edge) are hypotheses, satisfied by the paper's
+    X_{E,H'} (ConfigCount.lean gives the counting bounds for configurations given by maps on
+    the new vertices). (d) M is a generic q×r matrix over a finite field F (every r×r
+    submatrix nonsingular) with distinct rows, K ⊇ F a finite field with |K| = N; the paper
+    uses F_p ⊆ F_{p^a}. (e) Extendability (Definition 2.9) is formalized as IsExtendableRel
+    with partite complexes H ⊆ R(Fin s) and labellings t of the maps outside H[F].
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Opus 5.5 (AI agent in Claude Code, acting for the author)"
+  notes: >-
+    Agent review by Claude Opus 5.5, separate from the mechanical verification. The repairs of
+    the concentration argument (conditioning on the fixed vertices with a degenerate-colour
+    exceptional set, two-stage exposure with colour-dependent constants) are documented in
+    the source files (ExtConc.lean, Stage2Cert.lean, ManyDeg.lean). No independent human
+    review has been performed.
+
+alignment:
+  namespace: "DesignsII"
+  statements:
+    - {source: "Lemma 3.8 (ext*)", lean: "DesignsII.TParams.lemma_3_8", module: "DesignsIIExtChallenge", status: "proved"}
+
+acknowledgements: >-
+  Mathlib and the Lean community.
