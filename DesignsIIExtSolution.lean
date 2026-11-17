@@ -39,7 +39,7 @@ activation of each map `φ : [q] → [n]`. A copy `φ` of colour `j` is in the t
 `A_φ = A`, `φ` is activated (threshold `k φ`), `T_e = j` and `π_e φ = id` on its edges and
 `f_j ∘ φ = M y` for some `y` (`M` a generic `q × r` matrix over a finite field `F ⊆ K` with
 distinct rows); `M* = templateSet`. Let `Φ` be a `Σ`-adapted `[q]`-complex on `[n]`, `γ` a vector
-system with `A = Σ^≤`, `G` such that `(Φ, γ[G])` is `(ω, h)`-extendable, and let only copies that
+system (a family of `R`-complexes `S.A i`, hypothesis `hSc`) with `A = Σ^≤`, `G` such that `(Φ, γ[G])` is `(ω, h)`-extendable, and let only copies that
 are `Φ`-embeddings be activated, those with `γ(φ) ≤_γ G` with threshold at least `k_min`.
 For configurations `b ∈ C` (labelled `r`-maps `ψ b i ∈ Φ_{B_i}` with `γ(ψ b i) ≤_γ G`, distinct
 edges `e b i = Im(ψ b i)`, fixed vertices `u` meeting each edge in `F_i`, `|F_i| ≤ r - 1`,
@@ -60,16 +60,18 @@ non-colour coordinates) do not involve `N` directly.
   `z, q, r, m, Δ, Smax, |F|, s, kd` and `ε > 0` are fixed (then `p_deg ~ |F|^s / N`). It does
   not tend to `0` in the permitted cases `kd = 0` (first term `1`) or `s = 0` (`p_deg = 1`).
 * Lower bound. No claim is made that the lower bound is positive; this depends on the
-  parameters and is not guaranteed by any simple list of conditions. It is `≤ 0`, for instance,
-  if `m > z + 1 - kd` (the descending factorial vanishes), if `k_min = 0` (`p = 0`), if `a ≤ 0`,
-  or if `2ε N^v` exceeds the main term. About the correction only the following is asserted:
+  parameters and is not guaranteed by any simple list of conditions. For `m ≥ 1` it is `≤ 0`,
+  for instance, if `m > z + 1 - kd` (the descending factorial vanishes), if `k_min = 0`
+  (`p = 0`), or if `a ≤ 0`; for any `m` it is `≤ 0` if `2ε N^v` exceeds the main term. (For
+  `m = 0`, the empty configuration, the main term is `|C|`.) About the correction only the following is asserted:
   when `q > r` and `m ≥ 2` it is at most a constant (depending on `q, r, m`) times
   `n^{(q-r)m-1}`, so it is `o(a^m)` as `n → ∞` if moreover `a ≥ c n^{q-r}` for a fixed `c > 0`.
   When `q = r` (then `K_c` does not depend on `n`) or `m = 1` (natural subtraction `m - 2 = 0`,
   correction `K_c`) it need not be of lower order than `a^m`. -/
 theorem lemma_3_8 {M : Matrix (Fin P.q) (Fin P.r) F} (hM : IsGeneric M)
     (hrows : DistinctRows M) (κ : Fin P.N ≃ K) (hK : Fintype.card K = P.N)
-    (S : VSystem (Fin P.q) (Fin P.NA) (Fin D → ℤ) P.r) (Sg : Subgroup (Equiv.Perm (Fin P.q)))
+    (S : VSystem (Fin P.q) (Fin P.NA) (Fin D → ℤ) P.r) (hSc : ∀ i, (S.A i).IsComplex)
+    (Sg : Subgroup (Equiv.Perm (Fin P.q)))
     (Φ : RSystem (Fin P.q) (Fin P.n)) (hΦc : Φ.IsComplex) (hΦ : IsAdapted Φ Sg)
     (A : Fin P.NA) (hA : S.A A = sigmaLe Sg) (G : (Fin P.q → Option (Fin P.n)) → (Fin D → ℤ))
     {ω : ℝ} {hh : ℕ} (hh0 : 0 < hh) (hext : IsExtendableRel (r := P.r) Φ (gammaG S Sg Φ G) ω hh)

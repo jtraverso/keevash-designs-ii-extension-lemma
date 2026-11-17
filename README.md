@@ -10,7 +10,8 @@ The statement is an explicit finite-`N` bound (lower bound
 `C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`), valid for all permitted parameters.
 The failure probability tends to `0` as `N → ∞` when `s ≥ 1`, `1 ≤ kd ≤ z` and
 `z, q, r, m, Δ`, the coordinate-size bound `Smax`, `|F|, s, kd, ε > 0` are fixed. No claim is
-made that the lower bound is positive (it is `≤ 0` e.g. if `m > z+1-kd`, `k_min = 0` or `a ≤ 0`);
+made that the lower bound is positive (for `m ≥ 1` it is `≤ 0` e.g. if `m > z+1-kd`,
+`k_min = 0` or `a ≤ 0`);
 for `q > r` and `m ≥ 2` its correction term is `O(n^{(q-r)m-1})`. See the docstring of
 `lemma_3_8` for the precise remarks.
 
