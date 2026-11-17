@@ -19,12 +19,13 @@ project:
     explicit constants c₁ = c₁(z,q,r,m,Δ) and c₂ = c₂(z,q,r,m,Δ,Smax), where Smax bounds the
     sizes of the non-colour coordinates (|𝒜|, N_act, ...) (p_deg = |F|^s N^(s−1) (N−s)!/N!
     bounds the probability that a colour is degenerate at the s fixed vertices). The bound holds
-    for all permitted parameters but is informative only in a regime: every term of the failure
-    probability tends to 0 as N → ∞ when s ≥ 1, 1 ≤ kd ≤ z and z, q, r, m, Δ, Smax, |F|, s, kd
-    and ε > 0 are fixed (it does not for kd = 0 or s = 0); the correction is O(n^((q−r)m−1)) and
-    of lower order than a^m when m ≥ 2 and ω|V(Φ)|^(q−r) ≥ c·n^(q−r) for a fixed c > 0. For
-    m = 1 the natural-number exponent m−2 is 0, the correction is K_c and the lower bound is
-    vacuous for large n when q−r ≥ 2. The hypotheses are those of the paper: Φ is a
+    for all permitted parameters. Asymptotic remarks (the Lean theorem itself is a finite-N
+    inequality): every term of the failure probability tends to 0 as N → ∞ when s ≥ 1,
+    1 ≤ kd ≤ z and z, q, r, m, Δ, Smax, |F|, s, kd and ε > 0 are fixed (it does not for kd = 0
+    or s = 0). No claim is made that the lower bound is positive: it is ≤ 0 for instance if
+    m > z+1−kd, k_min = 0, a ≤ 0, or 2εN^v exceeds the main term. When q > r and m ≥ 2 the
+    correction is at most a constant times n^((q−r)m−1), hence o(a^m) if moreover a ≥ c·n^(q−r)
+    for a fixed c > 0; when q = r or m = 1 it need not be of lower order. The hypotheses are those of the paper: Φ is a
     Σ-adapted [q]-complex, (Φ, γ[G]) is (ω,h)-extendable (Definition 2.9), the copies used are
     Φ-embeddings of A = Σ^≤ and those with γ(φ) ≤_γ G are activated with threshold ≥ k_min. The
     proof follows the paper (Lemma e|E for the conditional probabilities given the fixed

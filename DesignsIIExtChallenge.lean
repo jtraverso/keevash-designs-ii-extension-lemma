@@ -427,11 +427,14 @@ non-colour coordinates) do not involve `N` directly.
 * Failure probability. Every term tends to `0` as `N → ∞` when `s ≥ 1`, `1 ≤ kd ≤ z` and
   `z, q, r, m, Δ, Smax, |F|, s, kd` and `ε > 0` are fixed (then `p_deg ~ |F|^s / N`). It does
   not tend to `0` in the permitted cases `kd = 0` (first term `1`) or `s = 0` (`p_deg = 1`).
-* Lower bound. For `m ≥ 2` the correction `m² K_c (n^{q-r})^{m-2}` is `O(n^{(q-r)m-1})`; it is of
-  lower order than `a^m` when moreover `ω |V(Φ)|^{q-r} ≥ c n^{q-r}` for a fixed `c > 0`, which is
-  the regime of the paper. For `m = 1` the exponent `m - 2` is `0` (natural subtraction), the
-  correction is `K_c` (of order `n^{2(q-r)-1}`) and for `q - r ≥ 2` and large `n` the lower bound
-  is negative, hence vacuous. -/
+* Lower bound. No claim is made that the lower bound is positive; this depends on the
+  parameters and is not guaranteed by any simple list of conditions. It is `≤ 0`, for instance,
+  if `m > z + 1 - kd` (the descending factorial vanishes), if `k_min = 0` (`p = 0`), if `a ≤ 0`,
+  or if `2ε N^v` exceeds the main term. About the correction only the following is asserted:
+  when `q > r` and `m ≥ 2` it is at most a constant (depending on `q, r, m`) times
+  `n^{(q-r)m-1}`, so it is `o(a^m)` as `n → ∞` if moreover `a ≥ c n^{q-r}` for a fixed `c > 0`.
+  When `q = r` (then `K_c` does not depend on `n`) or `m = 1` (natural subtraction `m - 2 = 0`,
+  correction `K_c`) it need not be of lower order than `a^m`. -/
 theorem lemma_3_8 {M : Matrix (Fin P.q) (Fin P.r) F} (hM : IsGeneric M)
     (hrows : DistinctRows M) (κ : Fin P.N ≃ K) (hK : Fintype.card K = P.N)
     (S : VSystem (Fin P.q) (Fin P.NA) (Fin D → ℤ) P.r) (Sg : Subgroup (Equiv.Perm (Fin P.q)))
