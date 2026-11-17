@@ -48,15 +48,22 @@ of configurations all of whose atoms `γ(ψ b i)` lie below `∂^γ M*` is at le
 `|C| (z+1-kd)_m (a^m - m² · K_c · (n^{q-r})^{m-2}) p^m - 2ε N^v` (in Lean
 `m * m * (Kc * (n ^ (q - r)) ^ (m - 2))`, i.e. `K_c` appears exactly once, also for `m = 2`), with
 `a = ω |V(Φ)|^{q-r} - (q-r) s n^{q-r-1}`, `p = pRate` and
-`K_c = q^{r+1} n^{q-r-1} · q^r n^{q-r} · (1 + C(q,r))` (so the correction is
-`O(n^{(q-r)m-1})`, of lower order than `a^m`), except with probability at most
-`C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`.
+`K_c = q^{r+1} n^{q-r-1} · q^r n^{q-r} · (1 + C(q,r))`, except with probability at most
+`C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`, where
+`p_deg = |F|^s N^{s-1} (N-s)!/N!` (natural-number exponents).
 
-This is an explicit finite-`N` bound. The constants `c₁` (depending on `z, q, r, m, Δ`) and `c₂`
+This is an explicit finite-`N` bound, valid for all parameters allowed by the hypotheses; it
+is not informative for all of them. The constants `c₁` (depending on `z, q, r, m, Δ`) and `c₂`
 (depending on `z, q, r, m, Δ` and on `Smax`, a bound for the sizes `NA`, `N_act`, … of the
-non-colour coordinates) do not involve `N` directly; the failure probability tends to `0` as
-`N → ∞` only when these parameters (and `|F|, s, kd, ε`) are kept fixed, or more generally when
-`c₁, c₂ = o(N)` and `|F|^s / N → 0`. -/
+non-colour coordinates) do not involve `N` directly.
+* Failure probability. Every term tends to `0` as `N → ∞` when `s ≥ 1`, `1 ≤ kd ≤ z` and
+  `z, q, r, m, Δ, Smax, |F|, s, kd` and `ε > 0` are fixed (then `p_deg ~ |F|^s / N`). It does
+  not tend to `0` in the permitted cases `kd = 0` (first term `1`) or `s = 0` (`p_deg = 1`).
+* Lower bound. For `m ≥ 2` the correction `m² K_c (n^{q-r})^{m-2}` is `O(n^{(q-r)m-1})`; it is of
+  lower order than `a^m` when moreover `ω |V(Φ)|^{q-r} ≥ c n^{q-r}` for a fixed `c > 0`, which is
+  the regime of the paper. For `m = 1` the exponent `m - 2` is `0` (natural subtraction), the
+  correction is `K_c` (of order `n^{2(q-r)-1}`) and for `q - r ≥ 2` and large `n` the lower bound
+  is negative, hence vacuous. -/
 theorem lemma_3_8 {M : Matrix (Fin P.q) (Fin P.r) F} (hM : IsGeneric M)
     (hrows : DistinctRows M) (κ : Fin P.N ≃ K) (hK : Fintype.card K = P.N)
     (S : VSystem (Fin P.q) (Fin P.NA) (Fin D → ℤ) P.r) (Sg : Subgroup (Equiv.Perm (Fin P.q)))

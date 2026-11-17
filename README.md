@@ -2,14 +2,16 @@
 
 A Lean 4 / Mathlib formalization of Lemma 3.8 of P. Keevash,
 [*The existence of designs II*](https://arxiv.org/abs/1802.05900): in the random algebraic template,
-extensions of a configuration whose atoms are covered by the template are, with high probability,
+extensions of a configuration whose atoms are covered by the template are, with high probability (in the regime described below),
 as many as expected.
 
 The statement is an explicit finite-`N` bound (lower bound
 `|C| (z+1-kd)_m (a^m - m² K_c (n^{q-r})^{m-2}) p^m - 2εN^v`, failure probability
-`C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`); it is a "with high probability"
-statement when `z, q, r, m, Δ`, the coordinate-size bound `Smax`, `|F|, s, kd, ε` are fixed and
-`N → ∞`.
+`C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`), valid for all permitted parameters.
+It is a nontrivial "with high probability" statement when `s ≥ 1`, `1 ≤ kd ≤ z`, `m ≥ 2`,
+`ω|V(Φ)|^{q-r} ≥ c n^{q-r}` (fixed `c > 0`) and `z, q, r, m, Δ`, the coordinate-size bound
+`Smax`, `|F|, s, kd, ε` are fixed as `N → ∞`; outside this regime (e.g. `kd = 0`, `s = 0` or
+`m = 1`) it can be vacuous. See the docstring of `lemma_3_8`.
 
 * **Challenge:** [`DesignsIIExtChallenge.lean`](DesignsIIExtChallenge.lean) — the definitions
   (labelled complexes, adapted complexes, extendability, vector systems, molecules and atoms, the

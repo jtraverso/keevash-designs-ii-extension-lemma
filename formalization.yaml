@@ -8,19 +8,23 @@ project:
     designs II" (arXiv:1802.05900): in the random algebraic template M* built from independent
     uniform injections f_j : [n] → F_{p^a}-like field K (j < z), random colours T_e and orders
     π_e of the r-sets, random A_φ and activations, the number of configurations of an extension
-    all of whose atoms γ(ψ) lie below ∂^γ M* is, with high probability, at least its explicit
-    expectation-type lower bound minus 2εN^v. The statement DesignsII.TParams.lemma_3_8 is fully
+    all of whose atoms γ(ψ) lie below ∂^γ M* is at least an explicit expectation-type lower
+    bound minus 2εN^v, except with an explicit failure probability (a with-high-probability
+    statement in the regime described below). The statement DesignsII.TParams.lemma_3_8 is fully
     quantitative, an explicit finite-N bound: the lower bound is
     |C|·(z+1−kd)_m·(a^m − m²·K_c·(n^(q−r))^(m−2))·p^m − 2εN^v (K_c occurs once, also for m = 2)
     with a = ω|V(Φ)|^(q−r) − (q−r)·s·n^(q−r−1), K_c = q^(r+1) n^(q−r−1) q^r n^(q−r) (1+C(q,r))
-    (so the correction is O(n^((q−r)m−1)), of lower order than a^m) and
-    p = (2N^(q−r))^(-1) z^(-C(q,r)) ((q−r)!/q!)^C(q,r) |𝒜|^(-1) k_min/N_act, and the failure
+    and p = (2N^(q−r))^(-1) z^(-C(q,r)) ((q−r)!/q!)^C(q,r) |𝒜|^(-1) k_min/N_act, and the failure
     probability is at most C(z,kd)·p_deg^kd + 2exp(−ε²N/(2c₁)) + 2exp(−ε²N/(2c₂)) with
     explicit constants c₁ = c₁(z,q,r,m,Δ) and c₂ = c₂(z,q,r,m,Δ,Smax), where Smax bounds the
     sizes of the non-colour coordinates (|𝒜|, N_act, ...) (p_deg = |F|^s N^(s−1) (N−s)!/N!
-    bounds the probability that a colour is degenerate at the s fixed vertices). The failure
-    probability tends to 0 as N → ∞ only when z, q, r, m, Δ, Smax, |F|, s, kd and ε are kept
-    fixed (or more generally c₁, c₂ = o(N) and |F|^s/N → 0); this is the regime of the paper. The hypotheses are those of the paper: Φ is a
+    bounds the probability that a colour is degenerate at the s fixed vertices). The bound holds
+    for all permitted parameters but is informative only in a regime: every term of the failure
+    probability tends to 0 as N → ∞ when s ≥ 1, 1 ≤ kd ≤ z and z, q, r, m, Δ, Smax, |F|, s, kd
+    and ε > 0 are fixed (it does not for kd = 0 or s = 0); the correction is O(n^((q−r)m−1)) and
+    of lower order than a^m when m ≥ 2 and ω|V(Φ)|^(q−r) ≥ c·n^(q−r) for a fixed c > 0. For
+    m = 1 the natural-number exponent m−2 is 0, the correction is K_c and the lower bound is
+    vacuous for large n when q−r ≥ 2. The hypotheses are those of the paper: Φ is a
     Σ-adapted [q]-complex, (Φ, γ[G]) is (ω,h)-extendable (Definition 2.9), the copies used are
     Φ-embeddings of A = Σ^≤ and those with γ(φ) ≤_γ G are activated with threshold ≥ k_min. The
     proof follows the paper (Lemma e|E for the conditional probabilities given the fixed
