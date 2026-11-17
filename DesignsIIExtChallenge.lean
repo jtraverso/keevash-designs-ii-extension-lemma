@@ -413,9 +413,18 @@ For configurations `b ∈ C` (labelled `r`-maps `ψ b i ∈ Φ_{B_i}` with `γ(�
 edges `e b i = Im(ψ b i)`, fixed vertices `u` meeting each edge in `F_i`, `|F_i| ≤ r - 1`,
 `|C| ≤ Δ N^v`, at most `Δ N^{v-(r-|F_i|)}` configurations through a given `i`-th edge), the number
 of configurations all of whose atoms `γ(ψ b i)` lie below `∂^γ M*` is at least
-`|C| (z+1-kd)_m (a^m - m² K_c n^{(q-r)(m-2)}) p^m - 2ε N^v`, with
-`a = ω |V(Φ)|^{q-r} - (q-r) s n^{q-r-1}` and `p = pRate`, except with probability at most
-`C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`. -/
+`|C| (z+1-kd)_m (a^m - m² · K_c · (n^{q-r})^{m-2}) p^m - 2ε N^v` (in Lean
+`m * m * (Kc * (n ^ (q - r)) ^ (m - 2))`, i.e. `K_c` appears exactly once, also for `m = 2`), with
+`a = ω |V(Φ)|^{q-r} - (q-r) s n^{q-r-1}`, `p = pRate` and
+`K_c = q^{r+1} n^{q-r-1} · q^r n^{q-r} · (1 + C(q,r))` (so the correction is
+`O(n^{(q-r)m-1})`, of lower order than `a^m`), except with probability at most
+`C(z,kd) p_deg^kd + 2e^{-ε²N/(2c₁)} + 2e^{-ε²N/(2c₂)}`.
+
+This is an explicit finite-`N` bound. The constants `c₁` (depending on `z, q, r, m, Δ`) and `c₂`
+(depending on `z, q, r, m, Δ` and on `Smax`, a bound for the sizes `NA`, `N_act`, … of the
+non-colour coordinates) do not involve `N` directly; the failure probability tends to `0` as
+`N → ∞` only when these parameters (and `|F|, s, kd, ε`) are kept fixed, or more generally when
+`c₁, c₂ = o(N)` and `|F|^s / N → 0`. -/
 theorem lemma_3_8 {M : Matrix (Fin P.q) (Fin P.r) F} (hM : IsGeneric M)
     (hrows : DistinctRows M) (κ : Fin P.N ≃ K) (hK : Fintype.card K = P.N)
     (S : VSystem (Fin P.q) (Fin P.NA) (Fin D → ℤ) P.r) (Sg : Subgroup (Equiv.Perm (Fin P.q)))
